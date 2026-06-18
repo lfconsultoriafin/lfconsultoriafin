@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LF Consultoria Financeira — Estratégia · Resultado</title>
+  <meta name="description" content="Consultoria financeira corporativa para pequenas empresas. Gestão de fluxo de caixa e capital de giro." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0D2156;
+      --navy-d:  #091840;
+      --navy-l:  #1a3270;
+      --gold:    #F5A623;
+      --gold-d:  #d9911a;
+      --light:   #F4F6FA;
+      --white:   #FFFFFF;
+      --dark:    #111827;
+      --mid:     #374151;
+      --gray:    #6B7280;
+      --border:  #E5E7EB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 7%;
+      height: 66px;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .nav-brand {
+      display: flex; flex-direction: column; line-height: 1;
+    }
+    .nav-brand strong {
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--white); letter-spacing: 0.1em;
+    }
+    .nav-brand span {
+      font-size: 0.6rem; color: var(--gold);
+      letter-spacing: 0.25em; font-weight: 500; margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex; gap: 2.2rem; list-style: none; align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.65); text-decoration: none;
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--gold) !important; color: var(--navy) !important;
+      padding: 0.5rem 1.2rem; border-radius: 3px;
+      font-weight: 700 !important; font-size: 0.8rem !important;
+      letter-spacing: 0.06em !important; text-transform: uppercase;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-d) !important; }
+
+    /* ─── HERO ────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 7% 80px;
+      position: relative; overflow: hidden;
+      gap: 4rem;
+    }
+
+    .hero-bg-lines {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .hero-bg-lines::before {
+      content: '';
+      position: absolute; right: -80px; top: 50%;
+      transform: translateY(-50%);
+      width: 600px; height: 600px;
+      border: 1px solid rgba(245,166,35,0.08);
+      border-radius: 50%;
+    }
+    .hero-bg-lines::after {
+      content: '';
+      position: absolute; right: 40px; top: 50%;
+      transform: translateY(-50%);
+      width: 400px; height: 400px;
+      border: 1px solid rgba(245,166,35,0.05);
+      border-radius: 50%;
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      margin-bottom: 1.8rem;
+    }
+    .hero-tag-line {
+      width: 32px; height: 2px; background: var(--gold);
+    }
+    .hero-tag-text {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em;
+      color: var(--gold); text-transform: uppercase;
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.12; letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-h1 em { font-style: normal; color: var(--gold); }
+
+    .hero-p {
+      font-size: 1rem; color: rgba(255,255,255,0.6);
+      line-height: 1.75; max-width: 460px; margin-bottom: 2.8rem;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+    .btn-gold {
+      background: var(--gold); color: var(--navy);
+      padding: 0.9rem 2rem; border-radius: 3px;
+      font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em;
+      text-decoration: none; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-gold:hover { background: var(--gold-d); transform: translateY(-2px); }
+
+    .btn-outline {
+      color: rgba(255,255,255,0.7); font-size: 0.85rem; font-weight: 500;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .btn-outline:hover { color: var(--gold); }
+    .btn-outline::after { content: '→'; transition: transform 0.2s; }
+    .btn-outline:hover::after { transform: translateX(3px); }
+
+    /* Hero right — painel de números */
+    .hero-right {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+
+    .hero-panel {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px; padding: 1.6rem 1.8rem;
+      display: flex; align-items: center; gap: 1.4rem;
+    }
+    .hero-panel-icon {
+      width: 44px; height: 44px; border-radius: 4px;
+      background: rgba(245,166,35,0.12);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero-panel-icon svg { width: 20px; height: 20px; fill: var(--gold); }
+    .hero-panel-num {
+      font-size: 1.6rem; font-weight: 800; color: var(--white);
+      line-height: 1; letter-spacing: -0.02em;
+    }
+    .hero-panel-label {
+      font-size: 0.75rem; color: rgba(255,255,255,0.45);
+      margin-top: 0.25rem; letter-spacing: 0.04em;
+    }
+
+    /* ─── SEÇÕES BASE ─────────────────────────── */
+    section { padding: 96px 7%; }
+
+    .s-tag {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em;
+      color: var(--gold); text-transform: uppercase;
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .s-tag::before { content: ''; width: 24px; height: 2px; background: var(--gold); }
+
+    .s-h2 {
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      font-weight: 800; color: var(--navy);
+      line-height: 1.15; letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+    }
+    .s-sub {
+      font-size: 0.95rem; color: var(--gray); line-height: 1.75; max-width: 520px;
+    }
+    .s-header { margin-bottom: 3.5rem; }
+
+    .wrap { max-width: 1140px; margin: 0 auto; }
+
+    /* ─── SOBRE ───────────────────────────────── */
+    #sobre { background: var(--light); }
+
+    .sobre-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: start;
+    }
+
+    .sobre-left {}
+
+    .sobre-p {
+      font-size: 0.95rem; color: var(--mid); line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .sobre-destaque {
+      margin: 2rem 0;
+      padding: 1.4rem 1.6rem;
+      border-left: 3px solid var(--gold);
+      background: var(--white);
+      font-size: 0.95rem; color: var(--navy); font-weight: 500;
+      line-height: 1.65; font-style: italic;
+    }
+
+    .sobre-grid-cards {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--border); border: 1px solid var(--border);
+      border-radius: 6px; overflow: hidden;
+    }
+    .sobre-card {
+      background: var(--white);
+      padding: 1.3rem 1.4rem;
+    }
+    .sobre-card-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .sobre-card-value {
+      font-size: 0.88rem; font-weight: 600; color: var(--navy); line-height: 1.4;
+    }
+
+    /* lado direito — valores */
+    .sobre-right {}
+
+    .sobre-valores-title {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
+      color: var(--navy); text-transform: uppercase;
+      margin-bottom: 1.6rem; padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .sobre-valor {
+      display: flex; gap: 1.2rem; padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .sobre-valor:last-child { border-bottom: none; }
+    .sobre-valor-num {
+      font-size: 1.4rem; font-weight: 800; color: var(--gold);
+      line-height: 1; flex-shrink: 0; min-width: 36px;
+    }
+    .sobre-valor-title {
+      font-size: 0.88rem; font-weight: 700; color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .sobre-valor-desc {
+      font-size: 0.82rem; color: var(--gray); line-height: 1.6;
+    }
+
+    /* ─── SERVIÇOS ────────────────────────────── */
+    #servicos { background: var(--white); }
+
+    .servicos-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+
+    .serv-card {
+      border: 1px solid var(--border); border-radius: 6px;
+      overflow: hidden; transition: box-shadow 0.25s, transform 0.2s;
+    }
+    .serv-card:hover {
+      box-shadow: 0 12px 40px rgba(13,33,86,0.1);
+      transform: translateY(-3px);
+    }
+
+    .serv-head {
+      padding: 1.6rem 2rem;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+    }
+    .serv-head.navy { background: var(--navy); }
+    .serv-head.gold { background: var(--gold); }
+
+    .serv-head-label {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .navy .serv-head-label { color: rgba(255,255,255,0.5); }
+    .gold .serv-head-label { color: rgba(13,33,86,0.5); }
+
+    .serv-head-name {
+      font-size: 1rem; font-weight: 700;
+    }
+    .navy .serv-head-name { color: var(--white); }
+    .gold .serv-head-name { color: var(--navy); }
+
+    .serv-price {
+      text-align: right; flex-shrink: 0;
+    }
+    .serv-price-val {
+      font-size: 1.4rem; font-weight: 800; line-height: 1;
+    }
+    .navy .serv-price-val { color: var(--gold); }
+    .gold .serv-price-val { color: var(--navy); }
+
+    .serv-price-unit {
+      font-size: 0.68rem; font-weight: 500; opacity: 0.6; margin-top: 2px;
+    }
+    .navy .serv-price-unit { color: var(--white); }
+    .gold .serv-price-unit { color: var(--navy); }
+
+    .serv-body { padding: 1.8rem 2rem; }
+
+    .serv-item {
+      display: flex; gap: 0.9rem; padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border); font-size: 0.875rem;
+      color: var(--mid); line-height: 1.5; align-items: flex-start;
+    }
+    .serv-item:last-of-type { border-bottom: none; }
+    .serv-item-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: 6px;
+    }
+
+    .serv-tag {
+      display: inline-block; margin-top: 1.4rem;
+      padding: 0.5rem 1rem; border-radius: 3px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      background: var(--light); color: var(--navy);
+    }
+
+    /* ─── COMO FUNCIONA ──────────────────────── */
+    #como-funciona { background: var(--navy); }
+    #como-funciona .s-h2 { color: var(--white); }
+    #como-funciona .s-sub { color: rgba(255,255,255,0.5); max-width: 600px; }
+
+    .steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2rem; position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: calc(12.5% + 18px); right: calc(12.5% + 18px);
+      height: 1px; background: rgba(245,166,35,0.2);
+    }
+
+    .step { text-align: center; }
+
+    .step-circle {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.6rem;
+      font-size: 0.85rem; font-weight: 800; color: var(--gold);
+      position: relative; z-index: 1;
+      background: var(--navy);
+    }
+
+    .step-h {
+      font-size: 0.9rem; font-weight: 700; color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .step-p {
+      font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.65;
+    }
+
+    /* ─── DIFERENCIAIS ───────────────────────── */
+    #diferenciais { background: var(--light); }
+
+    .dif-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+
+    .dif-card {
+      background: var(--white);
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 2rem 1.8rem;
+      transition: box-shadow 0.2s;
+    }
+    .dif-card:hover { box-shadow: 0 6px 24px rgba(13,33,86,0.07); }
+
+    .dif-icon {
+      width: 48px; height: 48px; border-radius: 4px;
+      background: rgba(13,33,86,0.06);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .dif-icon svg { width: 22px; height: 22px; fill: var(--navy); }
+
+    .dif-h {
+      font-size: 0.92rem; font-weight: 700; color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .dif-p {
+      font-size: 0.82rem; color: var(--gray); line-height: 1.7;
+    }
+
+    /* ─── CONTATO ────────────────────────────── */
+    #contato { background: var(--white); }
+
+    .contato-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start;
+    }
+
+    .contato-left .s-header { margin-bottom: 2.4rem; }
+    .contato-left .s-h2 { color: var(--navy); }
+
+    .contato-itens { display: flex; flex-direction: column; gap: 1.4rem; }
+
+    .c-item { display: flex; gap: 1rem; align-items: flex-start; }
+
+    .c-icon {
+      width: 42px; height: 42px; border-radius: 4px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .c-icon svg { width: 18px; height: 18px; fill: var(--gold); }
+
+    .c-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+      color: var(--gray); text-transform: uppercase; margin-bottom: 0.25rem;
+    }
+    .c-value {
+      font-size: 0.9rem; font-weight: 600; color: var(--navy);
+    }
+    .c-value a { color: inherit; text-decoration: none; }
+    .c-value a:hover { color: var(--gold); }
+
+    /* Formulário */
+    .contato-form {
+      background: var(--navy);
+      border-radius: 6px; padding: 2.8rem 2.4rem;
+    }
+    .form-h {
+      font-size: 1.1rem; font-weight: 700; color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .form-sub {
+      font-size: 0.8rem; color: rgba(255,255,255,0.45);
+      margin-bottom: 2rem; line-height: 1.5;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fg { margin-bottom: 1.2rem; }
+    .fg label {
+      display: block; font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); margin-bottom: 0.4rem;
+    }
+    .fg input, .fg textarea, .fg select {
+      width: 100%; padding: 0.75rem 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 3px; color: var(--white);
+      font-family: 'Inter', sans-serif; font-size: 0.88rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .fg input:focus, .fg textarea:focus { border-color: var(--gold); }
+    .fg textarea { resize: vertical; min-height: 100px; }
+    .fg select option { background: var(--navy); }
+
+    .form-btn {
+      width: 100%; background: var(--gold); color: var(--navy);
+      padding: 0.95rem; border: none; border-radius: 3px;
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s;
+      margin-top: 0.4rem;
+    }
+    .form-btn:hover { background: var(--gold-d); }
+
+    /* ─── FOOTER ─────────────────────────────── */
+    footer {
+      background: var(--navy-d);
+      border-top: 3px solid var(--gold);
+      padding: 2.2rem 7%;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-brand strong {
+      display: block; font-size: 0.95rem; font-weight: 800;
+      color: var(--white); letter-spacing: 0.1em;
+    }
+    .footer-brand span {
+      font-size: 0.6rem; color: var(--gold);
+      letter-spacing: 0.22em; font-weight: 500; margin-top: 3px; display: block;
+    }
+    .footer-info {
+      font-size: 0.75rem; color: rgba(255,255,255,0.35); text-align: right;
+    }
+    .footer-info span { display: block; }
+
+    /* ─── RESPONSIVO ─────────────────────────── */
+    @media (max-width: 960px) {
+      #hero { grid-template-columns: 1fr; padding-top: 110px; }
+      .hero-right { display: none; }
+      .sobre-grid, .servicos-grid, .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .steps::before { display: none; }
+      .dif-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      nav { padding: 0 5%; }
+      .nav-links { display: none; }
+      section { padding: 72px 5%; }
+    }
+
+    @media (max-width: 560px) {
+      .sobre-grid-cards { grid-template-columns: 1fr; }
+      .dif-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      section { padding: 60px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <strong>LF CONSULTORIA</strong>
+    <span>ESTRATÉGIA · RESULTADO</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#como-funciona">Como Funciona</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#contato" class="nav-cta">Falar Conosco</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-lines"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">
+      <div class="hero-tag-line"></div>
+      <span class="hero-tag-text">Consultoria Financeira Corporativa</span>
+    </div>
+    <h1 class="hero-h1">
+      Clareza financeira<br>
+      para quem precisa <em>crescer.</em>
+    </h1>
+    <p class="hero-p">
+      Diagnóstico profundo, análise estratégica e planos de ação reais — para pequenas empresas que querem controlar suas finanças e crescer com solidez.
+    </p>
+    <div class="hero-btns">
+      <a href="#contato" class="btn-gold">Solicitar Diagnóstico</a>
+      <a href="#servicos" class="btn-outline">Ver serviços</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-panel">
+      <div class="hero-panel-icon">
+        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+      </div>
+      <div>
+        <div class="hero-panel-num">Fluxo de Caixa</div>
+        <div class="hero-panel-label">Controle e previsibilidade financeira</div>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="hero-panel-icon">
+        <svg viewBox="0 0 24 24"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg>
+      </div>
+      <div>
+        <div class="hero-panel-num">Capital de Giro</div>
+        <div class="hero-panel-label">Otimização e eficiência do capital</div>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="hero-panel-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+      </div>
+      <div>
+        <div class="hero-panel-num">Diagnóstico</div>
+        <div class="hero-panel-label">Identificação de gargalos e oportunidades</div>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="hero-panel-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+      </div>
+      <div>
+        <div class="hero-panel-num">Resultados</div>
+        <div class="hero-panel-label">Planos de ação concretos e implementáveis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJETIVOS -->
+<section id="objetivos" style="background:var(--navy);padding:72px 7%;">
+  <div class="wrap">
+    <div class="s-header" style="margin-bottom:3rem;">
+      <div class="s-tag" style="color:var(--gold);">O que entregamos</div>
+      <h2 class="s-h2" style="color:var(--white);">Nossos Objetivos com cada cliente</h2>
+      <p class="s-sub" style="color:rgba(255,255,255,0.5);">Cada engajamento é orientado por resultados concretos e mensuráveis para a saúde financeira da empresa.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+
+      <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:2rem 1.8rem;border-top:3px solid var(--gold);">
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">01</div>
+        <div style="font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;">Visibilidade Financeira Real</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Entender com clareza onde está o dinheiro, para onde vai e o que está consumindo margem — sem achismos.</div>
+      </div>
+
+      <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:2rem 1.8rem;border-top:3px solid var(--gold);">
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">02</div>
+        <div style="font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;">Controle do Fluxo de Caixa</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Estruturar o controle de entradas e saídas para eliminar surpresas e garantir que a empresa nunca fique sem caixa.</div>
+      </div>
+
+      <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:2rem 1.8rem;border-top:3px solid var(--gold);">
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">03</div>
+        <div style="font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;">Otimização do Capital de Giro</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Identificar oportunidades de liberar capital parado e melhorar o ciclo financeiro da operação.</div>
+      </div>
+
+      <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:2rem 1.8rem;border-top:3px solid rgba(255,255,255,0.15);">
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">04</div>
+        <div style="font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;">Identificação de Gargalos</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Mapear os pontos que consomem recursos sem retorno e propor correções objetivas com impacto direto no resultado.</div>
+      </div>
+
+      <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:2rem 1.8rem;border-top:3px solid rgba(255,255,255,0.15);">
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">05</div>
+        <div style="font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;">Previsibilidade e Planejamento</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Construir uma visão prospectiva das finanças para que as decisões da empresa sejam tomadas com base em dados, não intuição.</div>
+      </div>
+
+      <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:2rem 1.8rem;border-top:3px solid rgba(255,255,255,0.15);">
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">06</div>
+        <div style="font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;">Cultura Financeira Interna</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7;">Capacitar a equipe para manter os controles funcionando de forma autônoma — o objetivo é que a empresa não dependa da consultoria para sempre.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="wrap">
+    <div class="sobre-grid">
+      <div class="sobre-left">
+        <div class="s-header">
+          <div class="s-tag">Sobre</div>
+          <h2 class="s-h2">Luiz Fraga</h2>
+        </div>
+        <p class="sobre-p">
+          Profissional com mais de 7 anos de experiência em finanças corporativas, formado em Administração e com Pós-Graduação em Finanças e Eficiência Empresarial.
+        </p>
+        <p class="sobre-p">
+          A LF Consultoria Financeira foi criada com um propósito objetivo: levar para pequenas empresas o mesmo rigor de análise financeira que grandes corporações têm acesso — com presença semanal, diagnóstico real e acompanhamento até o resultado acontecer.
+        </p>
+        <div class="sobre-destaque">
+          "Nosso trabalho não para no relatório. Acompanhamos de perto cada etapa para garantir que as melhorias saiam do papel e gerem resultado real."
+        </div>
+        <div class="sobre-grid-cards">
+          <div class="sobre-card">
+            <div class="sobre-card-label">Formação</div>
+            <div class="sobre-card-value">Administração</div>
+          </div>
+          <div class="sobre-card">
+            <div class="sobre-card-label">Pós-Graduação</div>
+            <div class="sobre-card-value">Finanças e Eficiência Empresarial</div>
+          </div>
+          <div class="sobre-card">
+            <div class="sobre-card-label">Experiência</div>
+            <div class="sobre-card-value">+7 anos em finanças corporativas</div>
+          </div>
+          <div class="sobre-card">
+            <div class="sobre-card-label">Especialidade</div>
+            <div class="sobre-card-value">Fluxo de caixa e capital de giro</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sobre-right">
+        <div class="sobre-valores-title">Nossa Abordagem</div>
+        <div class="sobre-valor">
+          <div class="sobre-valor-num">01</div>
+          <div>
+            <div class="sobre-valor-title">Diagnóstico antes de qualquer recomendação</div>
+            <div class="sobre-valor-desc">Entendemos a fundo a realidade financeira da empresa antes de propor qualquer mudança. Sem atalhos.</div>
+          </div>
+        </div>
+        <div class="sobre-valor">
+          <div class="sobre-valor-num">02</div>
+          <div>
+            <div class="sobre-valor-title">Presença semanal, não relatórios mensais</div>
+            <div class="sobre-valor-desc">Acompanhamos a implementação de perto — não apenas entregamos documentos e nos afastamos.</div>
+          </div>
+        </div>
+        <div class="sobre-valor">
+          <div class="sobre-valor-num">03</div>
+          <div>
+            <div class="sobre-valor-title">Resultado como métrica de sucesso</div>
+            <div class="sobre-valor-desc">Medimos o sucesso pelos indicadores reais da empresa: fluxo de caixa, capital disponível e previsibilidade financeira.</div>
+          </div>
+        </div>
+        <div class="sobre-valor">
+          <div class="sobre-valor-num">04</div>
+          <div>
+            <div class="sobre-valor-title">Responsabilidade consultiva, não contábil</div>
+            <div class="sobre-valor-desc">Atuamos exclusivamente em gestão financeira corporativa — sem sobreposição com contabilidade ou assessoria de investimentos.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="wrap">
+    <div class="s-header">
+      <div class="s-tag">Serviços</div>
+      <h2 class="s-h2">Formatos de Contratação</h2>
+      <p class="s-sub">Dois modelos pensados para diferentes necessidades — ambos com foco exclusivo em gestão financeira corporativa.</p>
+    </div>
+    <div class="servicos-grid">
+
+      <div class="serv-card">
+        <div class="serv-head navy">
+          <div>
+            <div class="serv-head-label">Formato A</div>
+            <div class="serv-head-name">Consultoria Recorrente Mensal</div>
+          </div>
+          <div class="serv-price">
+            <div class="serv-price-val">R$ 6.000</div>
+            <div class="serv-price-unit">por mês</div>
+          </div>
+        </div>
+        <div class="serv-body">
+          <div class="serv-item"><div class="serv-item-dot"></div>Diagnóstico financeiro completo no primeiro mês</div>
+          <div class="serv-item"><div class="serv-item-dot"></div>Acompanhamento presencial recorrente ao estabelecimento do cliente</div>
+          <div class="serv-item"><div class="serv-item-dot"></div>Relatório mensal com indicadores e recomendações</div>
+          <div class="serv-item"><div class="serv-item-dot"></div>Suporte remoto incluso entre os atendimentos</div>
+          <div class="serv-item"><div class="serv-item-dot"></div>Fidelidade mínima de 12 meses</div>
+          <span class="serv-tag">Ideal para acompanhamento contínuo</span>
+        </div>
+      </div>
+
+      <div class="serv-card">
+        <div class="serv-head gold">
+          <div>
+            <div class="serv-head-label">Formato B</div>
+            <div class="serv-head-name">Hora Avulsa</div>
+          </div>
+          <div class="serv-price">
+            <div class="serv-price-val">R$ 250</div>
+            <div class="serv-price-unit">por hora</div>
+          </div>
+        </div>
+        <div class="serv-body">
+          <div class="serv-item"><div class="serv-item-dot"></div>Atendimentos pontuais sob demanda</div>
+          <div class="serv-item"><div class="serv-item-dot"></div>Análises, pareceres e reuniões de alinhamento</div>
+          <div class="serv-item"><div class="serv-item-dot"></div>Orientações financeiras específicas</div>
+          <div class="serv-item"><div class="serv-item-dot"></div>Sem fidelidade mínima</div>
+          <div class="serv-item"><div class="serv-item-dot"></div>Contratado sob demanda, quando necessário</div>
+          <span class="serv-tag">Ideal para demandas pontuais</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="s-header">
+      <div class="s-tag">Processo</div>
+      <h2 class="s-h2">Como Funciona</h2>
+      <p class="s-sub">Do primeiro contato ao início do acompanhamento em quatro etapas simples.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle">01</div>
+        <div class="step-h">Primeiro Contato</div>
+        <div class="step-p">Você nos apresenta a empresa. Entendemos o cenário antes de qualquer proposta.</div>
+      </div>
+      <div class="step">
+        <div class="step-circle">02</div>
+        <div class="step-h">Proposta e Contrato</div>
+        <div class="step-p">Enviamos a proposta comercial. Após aprovação, assinamos o contrato e definimos o calendário de visitas.</div>
+      </div>
+      <div class="step">
+        <div class="step-circle">03</div>
+        <div class="step-h">Diagnóstico Inicial</div>
+        <div class="step-p">No primeiro mês mapeamos toda a situação financeira e entregamos o plano de ação priorizado.</div>
+      </div>
+      <div class="step">
+        <div class="step-circle">04</div>
+        <div class="step-h">Acompanhamento</div>
+        <div class="step-p">Acompanhamento contínuo, relatórios periódicos e suporte para garantir que as melhorias aconteçam e os resultados sejam sustentáveis.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="wrap">
+    <div class="s-header">
+      <div class="s-tag">Por que a LF Consultoria Financeira</div>
+      <h2 class="s-h2">Diferenciais</h2>
+      <p class="s-sub">O que nos distingue de relatórios genéricos e consultorias à distância.</p>
+    </div>
+    <div class="dif-grid">
+      <div class="dif-card">
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        </div>
+        <div class="dif-h">Acompanhamento Próximo</div>
+        <div class="dif-p">Estamos próximos ao cliente durante todo o processo — não apenas ao final do mês. A proximidade é o que garante que as mudanças aconteçam de fato.</div>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+        </div>
+        <div class="dif-h">Diagnóstico Incluso</div>
+        <div class="dif-p">O primeiro mês é sempre de diagnóstico. Antes de qualquer recomendação, entendemos a fundo a realidade da sua empresa.</div>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+        </div>
+        <div class="dif-h">Plano de Ação Real</div>
+        <div class="dif-p">Entregamos recomendações concretas e priorizadas — não listas de boas práticas genéricas que ficam na gaveta.</div>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        </div>
+        <div class="dif-h">Foco Exclusivo em PMEs</div>
+        <div class="dif-p">Atendemos exclusivamente pequenas empresas. Nossa metodologia é calibrada para a realidade e os recursos desse porte.</div>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/></svg>
+        </div>
+        <div class="dif-h">Confidencialidade Total</div>
+        <div class="dif-p">Trabalhamos com dados financeiros sensíveis. Nosso contrato garante sigilo por 5 anos após o encerramento.</div>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        </div>
+        <div class="dif-h">Precificação Transparente</div>
+        <div class="dif-p">Valores claros e sem surpresas. O que está no contrato é exatamente o que é cobrado — sem taxas ocultas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="wrap">
+    <div class="contato-grid">
+      <div class="contato-left">
+        <div class="s-header">
+          <div class="s-tag">Contato</div>
+          <h2 class="s-h2">Vamos conversar sobre sua empresa?</h2>
+          <p class="s-sub">Entre em contato pelo canal de sua preferência. Respondemos em até 24 horas úteis.</p>
+        </div>
+        <div class="contato-itens">
+          <div class="c-item">
+            <div class="c-icon">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.5 11.5 0 00.57 3.6 1 1 0 01-.25 1.01l-2.2 2.18z"/></svg>
+            </div>
+            <div>
+              <div class="c-label">WhatsApp</div>
+              <div class="c-value"><a href="https://wa.me/5511982454761">+55 11 98245-4761</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div>
+              <div class="c-label">E-mail</div>
+              <div class="c-value"><a href="mailto:Luiz.Fraga@lfconsultoriafin.com.br">Luiz.Fraga@lfconsultoriafin.com.br</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <div class="c-label">LinkedIn</div>
+              <div class="c-value"><a href="https://www.linkedin.com/in/lf-consultoria-a80973417">linkedin.com/in/lf-consultoria</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+            </div>
+            <div>
+              <div class="c-label">Localização</div>
+              <div class="c-value">São Paulo — SP</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contato-form">
+        <div class="form-h">Solicite um Diagnóstico</div>
+        <div class="form-sub">Preencha o formulário e entraremos em contato para agendar uma conversa sem compromisso.</div>
+        <div class="form-row">
+          <div class="fg">
+            <label>Nome</label>
+            <input type="text" placeholder="Seu nome" />
+          </div>
+          <div class="fg">
+            <label>Empresa</label>
+            <input type="text" placeholder="Nome da empresa" />
+          </div>
+        </div>
+        <div class="fg">
+          <label>E-mail</label>
+          <input type="email" placeholder="seu@email.com" />
+        </div>
+        <div class="fg">
+          <label>Telefone / WhatsApp</label>
+          <input type="tel" placeholder="+55 11 98245-4761" />
+        </div>
+        <div class="fg">
+          <label>Faturamento mensal aproximado</label>
+          <select>
+            <option value="" disabled selected>Selecione uma faixa</option>
+            <option>Até R$ 50.000/mês</option>
+            <option>R$ 50.000 a R$ 150.000/mês</option>
+            <option>R$ 150.000 a R$ 500.000/mês</option>
+            <option>Acima de R$ 500.000/mês</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Como podemos ajudar?</label>
+          <textarea placeholder="Descreva brevemente o principal desafio financeiro da sua empresa..."></textarea>
+        </div>
+        <button class="form-btn">Solicitar Diagnóstico</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <strong>LF CONSULTORIA</strong>
+    <span>ESTRATÉGIA · RESULTADO</span>
+  </div>
+  <div class="footer-info">
+    <span>© 2025 LF Consultoria Financeira Ltda. · São Paulo, SP</span>
+    <span>CNPJ: XX.XXX.XXX/0001-XX</span>
+  </div>
+</footer>
+
+</body>
+</html>
