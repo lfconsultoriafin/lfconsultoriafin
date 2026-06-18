@@ -923,22 +923,22 @@
         </div>
       </div>
 
-      <div class="contato-form">
+      <form class="contato-form" action="https://formspree.io/f/xdavrzrl" method="POST">
         <div class="form-h">Solicite um Diagnóstico</div>
         <div class="form-sub">Preencha o formulário e entraremos em contato para agendar uma conversa sem compromisso.</div>
         <div class="form-row">
           <div class="fg">
             <label>Nome</label>
-            <input type="text" placeholder="Seu nome" />
+            <input type="text" name="nome" placeholder="Seu nome" />
           </div>
           <div class="fg">
             <label>Empresa</label>
-            <input type="text" placeholder="Nome da empresa" />
+            <input type="text" name="empresa" placeholder="Nome da empresa" />
           </div>
         </div>
         <div class="fg">
           <label>E-mail</label>
-          <input type="email" placeholder="seu@email.com" />
+          <input type="email" name="email" placeholder="seu@email.com" />
         </div>
         <div class="fg">
           <label>Telefone / WhatsApp</label>
@@ -946,7 +946,7 @@
         </div>
         <div class="fg">
           <label>Faturamento mensal aproximado</label>
-          <select>
+          <select name="faturamento">
             <option value="" disabled selected>Selecione uma faixa</option>
             <option>Até R$ 50.000/mês</option>
             <option>R$ 50.000 a R$ 150.000/mês</option>
@@ -956,10 +956,10 @@
         </div>
         <div class="fg">
           <label>Como podemos ajudar?</label>
-          <textarea placeholder="Descreva brevemente o principal desafio financeiro da sua empresa..."></textarea>
+          <textarea name="mensagem" placeholder="Descreva brevemente o principal desafio financeiro da sua empresa..."></textarea>
         </div>
-        <button class="form-btn">Solicitar Diagnóstico</button>
-      </div>
+        <button type="submit" class="form-btn">Solicitar Diagnóstico</button>
+      </form>
     </div>
   </div>
 </section>
