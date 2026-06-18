@@ -519,6 +519,18 @@
       section { padding: 72px 5%; }
     }
 
+    .objetivos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 960px) {
+      .objetivos-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 560px) {
+      .objetivos-grid { grid-template-columns: 1fr !important; }
+    }
+
     @media (max-width: 560px) {
       .sobre-grid-cards { grid-template-columns: 1fr; }
       .dif-grid { grid-template-columns: 1fr; }
@@ -614,7 +626,7 @@
       <h2 class="s-h2" style="color:var(--white);">Nossos Objetivos com cada cliente</h2>
       <p class="s-sub" style="color:rgba(255,255,255,0.5);">Cada engajamento é orientado por resultados concretos e mensuráveis para a saúde financeira da empresa.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;" class="objetivos-grid">
 
       <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:2rem 1.8rem;border-top:3px solid var(--gold);">
         <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;">01</div>
